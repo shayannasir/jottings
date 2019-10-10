@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 public class ViewNoteActivity extends AppCompatActivity {
+    int noteId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +20,14 @@ public class ViewNoteActivity extends AppCompatActivity {
         EditText noteBody = findViewById(R.id.noteBody);
 
         Intent intent = getIntent();
-        final int noteId = intent.getIntExtra("noteId", -1);
+        noteId = intent.getIntExtra("noteId", -1);
         if(noteId != -1){
             noteHead.setText((MainActivity.notes.get(noteId)));
             noteBody.setText(MainActivity.descriptions.get(noteId));
+        } else {
+            MainActivity.notes.add("");
+            MainActivity.descriptions.add("");
+            noteId = MainActivity.notes.size() - 1;
         }
 
         noteHead.addTextChangedListener(new TextWatcher() {
