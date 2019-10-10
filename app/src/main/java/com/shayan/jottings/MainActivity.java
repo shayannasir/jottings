@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     static ArrayList<String> notes = new ArrayList<>();
     static ArrayList<String> descriptions = new ArrayList<>();
+    static ArrayAdapter arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +28,8 @@ public class MainActivity extends AppCompatActivity {
         notes.add("Welcome my friend...");
         descriptions.add("...welcome to the Machine !");
 
-        notes.add("Welcome my friend...");
-        descriptions.add("...welcome to the Machine !");
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, notes){
+        //Opening the function for the sole purpose of change text of ListView items.
+        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, notes){
             @Override
             public View getView(int position, View convertView, ViewGroup parent){
                 // Get the Item from ListView
